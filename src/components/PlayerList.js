@@ -4,14 +4,19 @@ import { useQuery, gql } from '@apollo/client';
 
 const FEED_QUERY = gql`
   {
-    players{
+    attributes{
         id
         name
-        nationality
-        date
-        team
-        url
-      }
+        country
+        birth
+        age
+        club
+        position
+        nickname
+        height
+        weight
+        jersey
+    }
   }
 `
 ;
@@ -37,8 +42,8 @@ const PlayerList = () => {
             <div>
                 {data && (
                 <>
-                    {data.players.map((player) => (
-                     <Player key={player.id} player={player} />
+                    {data.attributes.map((attribute) => (
+                     <Player key={attribute.id} attribute={attribute} />
                  ))}
                 </>
             )}

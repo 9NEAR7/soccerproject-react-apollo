@@ -1,35 +1,36 @@
 import React from 'react';
 
 const Player = (props) => {
-  const { player } = props;
+  const { attribute } = props;
   return (
     <div>
       <div className='container-object'>
-        <b>{player.name}</b><br></br> 
+        <h1>{attribute.name}</h1> <br></br> 
         <ul>            
             <li>
                 <b><span>País de Origen</span></b><br></br>
-                {player.nationality}
+                {attribute.country}
             </li>
             
             <li>
                 <b><span>Fecha de nacimiento</span></b><br></br>
-                {player.date}
+                {attribute.birth}
             </li>
          
             <li>
                 <b><span>Equipo Actual</span></b><br></br>
-                {player.team}
+                {attribute.age}
             </li>
-
+            <b><span>Equipo Actual</span></b><br></br>
+                {attribute.club}
             <li>
-                <b><span>Imagen</span></b><br></br>
-                <a href={player.url}>{player.url}</a>
+            <b><span>Equipo Actual</span></b><br></br>
+                {attribute.position}
+                
             </li>  
 
-            <li>
-            </li>  
-              <img src= {player.url} className="imagenSerie"></img>
+           
+              
         </ul>
         
       </div>

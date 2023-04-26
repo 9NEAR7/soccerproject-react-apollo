@@ -15,7 +15,7 @@ import {
 
 // 2
 const httpLink = createHttpLink({
-  uri: 'http://34.94.101.136/graphql/'
+  uri: 'https://near97-near97.cloud.okteto.net/graphql/'
 });
 
 // 3
