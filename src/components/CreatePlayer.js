@@ -4,18 +4,29 @@ import { useMutation, gql } from '@apollo/client';
 const CREATE_PLAYER_MUTATION = gql`
   mutation PostMutation(
     $name: String!
-    $nationality: String!
-    $date: String!
-    $team: String!
-    $url: String!
+    $country: String!
+    $birth: String!
+    $age: String!
+    $club: String!
+    $position: String!
+    $nickname: String!
+    $height: String!
+    $weight: String!
+    $jersey: String!
   ) {
-    createPlayer(name: $name, nationality: $nationality, date: $date, team: $team, url: $url) {
-      id
-      name
-      nationality
-      date
-      team
-      url
+    createPlayer(name: $name, country: $country, birth: $birth, age: $age, club: $club, position: $position, nickname:$nickname, 
+      height: $height, weight: $weight, jersey: $jersey) {
+        id
+        name
+        country
+        birth
+        age
+        club
+        position
+        nickname
+        height
+        weight
+        jersey
       
     }
   }
@@ -24,33 +35,43 @@ const CREATE_PLAYER_MUTATION = gql`
 const CreatePlayer = () => {
   const [formState, setFormState] = useState({
     name: '',
-    nationality: '',
-    date: '',
-    team: '',
-    url: '',
+    country: '',
+    birth: '',
+    age: '',
+    club: '',
+    position: '',
+    nickname: '',
+    height: '',
+    weigth: '',
+    jersey: '',
   });
 
   const [createPlayer] = useMutation(CREATE_PLAYER_MUTATION, {
     variables: {
       name: formState.name,
-      nationality: formState.nationality,
-      date: formState.date,
-      team: formState.team,
-      url: formState.url,
+      country: formState.country,
+      birth: formState.birth,
+      age: formState.age,
+      club: formState.club,
+      position: formState.position,
+      nickname: formState.nickname,
+      height: formState.height,
+      weigth: formState.weigth,
+      jersey: formState.jersey,
     }
   });
 
   return (
-    <div>
+    <div className='mb-3 mt-2 '>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           createPlayer();
         }}
       >
-        <div className="flex flex-column mt3">
+        <div className="flex flex-column mb2">
           <input
-            className="mb2"
+            className="form-label form-control mb-3 mt-3"
             value={formState.name}
             onChange={(e) =>
               setFormState({
@@ -62,55 +83,116 @@ const CreatePlayer = () => {
             placeholder="Nombre del jugador"
           />
           <input
-            className="mb2"
-            value={formState.nationality}
+            className="form-label form-control mb-3 mt-1"
+            value={formState.country}
             onChange={(e) =>
               setFormState({
                 ...formState,
-                nationality: e.target.value
+                country: e.target.value
               })
             }
             type="text"
             placeholder="País de Origen"
           />
-          <input
-            className="mb2"
-            value={formState.date}
+           <input
+            className="form-label form-control mb-3 mt-1"
+            value={formState.birth}
             onChange={(e) =>
               setFormState({
                 ...formState,
-                date: e.target.value
+                birth: e.target.value
               })
             }
             type="text"
-            placeholder="Fecha de nacimiento"
+            placeholder="Año de nacimiento"
           />
-          <input
-            className="mb2"
-            value={formState.team}
+           <input
+            className="form-label form-control mb-3 mt-1"
+            value={formState.age}
             onChange={(e) =>
               setFormState({
                 ...formState,
-                team: e.target.value
+                age: e.target.value
               })
             }
             type="text"
-            placeholder="Equipo Actual"
+            placeholder="Edad"
           />
-          <input
-            className="mb2"
-            value={formState.url}
+           <input
+            className="form-label form-control mb-3 mt-1"
+            value={formState.club}
             onChange={(e) =>
               setFormState({
                 ...formState,
-                url: e.target.value
+                club: e.target.value
               })
             }
             type="text"
-            placeholder="URL imagen"
+            placeholder="Club Actual"
           />
+           <input
+            className="form-label form-control mb-3 mt-1"
+            value={formState.position}
+            onChange={(e) =>
+              setFormState({
+                ...formState,
+                position: e.target.value
+              })
+            }
+            type="text"
+            placeholder="Posición"
+          />
+           <input
+            className="form-label form-control mb-3 mt-1"
+            value={formState.nickname}
+            onChange={(e) =>
+              setFormState({
+                ...formState,
+                nickname: e.target.value
+              })
+            }
+            type="text"
+            placeholder="Apodo"
+          />
+           <input
+            className="form-label form-control mb-3 mt-1"
+            value={formState.height}
+            onChange={(e) =>
+              setFormState({
+                ...formState,
+                height: e.target.value
+              })
+            }
+            type="text"
+            placeholder="Altura"
+          />
+           <input
+            className="form-label form-control mb-3 mt-1"
+            value={formState.weigth}
+            onChange={(e) =>
+              setFormState({
+                ...formState,
+                weigth: e.target.value
+              })
+            }
+            type="text"
+            placeholder="Peso"
+          />
+           <input
+            className="form-label form-control mb-3 mt-1"
+            value={formState.jersey}
+            onChange={(e) =>
+              setFormState({
+                ...formState,
+                jersey: e.target.value
+              })
+            }
+            type="text"
+            placeholder="No. Jersey"
+          />
+          
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" className='btn btn-primary '>Agregar</button>
       </form>
     </div>
     

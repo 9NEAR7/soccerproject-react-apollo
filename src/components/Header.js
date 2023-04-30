@@ -21,7 +21,7 @@ const Header = () => {
         </Link>
       </div>
       <div>
-        <b><p>Ricardo Daniel Rosas de Jésus</p></b>
+        <b><h3>Cristian Terán Juárez</h3></b>
       </div>
     </div>
   );
