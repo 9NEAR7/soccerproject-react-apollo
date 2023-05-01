@@ -1,9 +1,9 @@
 name: master workflow 
 on: 
   push:
-    branches: [ "master"]
+    branches: [ "main"]
   pull_request:
-    branches: [ "master"]
+    branches: [ "main"]
 jobs:
   master_ci_cd:
     runs-on: ubuntu-latest
