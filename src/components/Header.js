@@ -1,29 +1,55 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <div className="flex pa1 justify-between nowrap orange">
-      <div className="flex flex-fixed black">
+    <nav className="navbar navbar-expand-sm navbar-dark bg-dark p-2">
+            
+    <Link 
+        className="navbar-brand" 
+        to="/"
+    >
+        API Players
+    </Link>
 
-        <Link to="/" className="no-underline black">
-          <div className="fw7 mr1">Lista de jugadores de fútbol del mundo</div>
-        </Link>        
-        <Link to="/" className="ml1 no-underline black">
-          new
-        </Link>
-        <div className="ml1">|</div>
-        <Link
-          to="/create"
-          className="ml1 no-underline black"
-        >
-          submit
-        </Link>
-      </div>
-      <div>
-        <b><h3>Cristian Terán Juárez</h3></b>
-      </div>
+    <div className="navbar-collapse">
+        <div className="navbar-nav">
+
+            <NavLink 
+                className={ ({isActive}) => `nav-item nav-link  ${ isActive ? 'active':'' }` }
+                to="/create"
+            >
+                Crear
+            </NavLink>
+
+            <NavLink 
+                className={ ({isActive}) => `nav-item nav-link  ${ isActive ? 'active':'' }` }
+                to="/"
+            >
+                Jugadores
+            </NavLink>
+           
+        </div>
     </div>
+
+    <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
+        <ul className="navbar-nav ml-auto">
+           
+            <span className="nav-item nav-link text-primary">
+                Cristian Terán
+            </span>
+        </ul>
+    </div>
+</nav>
+    
+    
+
+
+
+
+
+
+    
   );
 };
 

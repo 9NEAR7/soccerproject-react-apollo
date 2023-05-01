@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
 
-const CREATE_PLAYER_MUTATION = gql`
+const CREATE_ATTRIBUTE_MUTATION = gql`
   mutation PostMutation(
     $name: String!
     $country: String!
@@ -14,9 +14,8 @@ const CREATE_PLAYER_MUTATION = gql`
     $weight: String!
     $jersey: String!
   ) {
-    createPlayer(name: $name, country: $country, birth: $birth, age: $age, club: $club, position: $position, nickname:$nickname, 
-      height: $height, weight: $weight, jersey: $jersey) {
-        id
+    createAttribute(name:$name,country:$country,birth:$birth,age:$age,club:$club,position:$position,nickname:$nickname,height:$height,weight:$weight,jersey:$jersey) {
+        id 
         name
         country
         birth
@@ -26,14 +25,14 @@ const CREATE_PLAYER_MUTATION = gql`
         nickname
         height
         weight
-        jersey
-      
+        jersey 
     }
   }
 `;
 
-const CreatePlayer = () => {
+const CreateAttribute = () => {
   const [formState, setFormState] = useState({
+    id:'',
     name: '',
     country: '',
     birth: '',
@@ -42,11 +41,11 @@ const CreatePlayer = () => {
     position: '',
     nickname: '',
     height: '',
-    weigth: '',
+    weight: '',
     jersey: '',
   });
 
-  const [createPlayer] = useMutation(CREATE_PLAYER_MUTATION, {
+  const [CreateAttribute] = useMutation(CREATE_ATTRIBUTE_MUTATION, {
     variables: {
       name: formState.name,
       country: formState.country,
@@ -56,17 +55,20 @@ const CreatePlayer = () => {
       position: formState.position,
       nickname: formState.nickname,
       height: formState.height,
-      weigth: formState.weigth,
+      weight: formState.weight,
       jersey: formState.jersey,
     }
+
+    
   });
+
 
   return (
     <div className='mb-3 mt-2 '>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          createPlayer();
+          CreateAttribute();
         }}
       >
         <div className="flex flex-column mb2">
@@ -168,11 +170,11 @@ const CreatePlayer = () => {
           />
            <input
             className="form-label form-control mb-3 mt-1"
-            value={formState.weigth}
+            value={formState.weight}
             onChange={(e) =>
               setFormState({
                 ...formState,
-                weigth: e.target.value
+                weight: e.target.value
               })
             }
             type="text"
@@ -191,8 +193,8 @@ const CreatePlayer = () => {
             placeholder="No. Jersey"
           />
           
-        </div>
-        <button type="submit" className='btn btn-primary '>Agregar</button>
+        </div >
+        <button type="submit" className='btn btn-primary  btn-lg'>Agregar</button>
       </form>
     </div>
     
@@ -200,4 +202,4 @@ const CreatePlayer = () => {
    
 };
 
-export default CreatePlayer;
+export default CreateAttribute;

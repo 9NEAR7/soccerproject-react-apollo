@@ -1,8 +1,8 @@
 import React from 'react';
-import CreatePlayer from './CreatePlayer';
 import Header from './Header';
 import PlayerList from './PlayerList';
 import { Route, Routes } from 'react-router-dom';
+import CreateAttribute from './CreatePlayer';
 
 const App = () => {
   return (
@@ -13,7 +13,7 @@ const App = () => {
           <Route path="/" element={<PlayerList/>} />
           <Route
             path="/create"
-            element={<CreatePlayer/>}
+            element={<CreateAttribute/>}
           />
         </Routes>
       </div>
